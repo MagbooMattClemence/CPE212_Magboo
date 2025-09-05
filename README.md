@@ -1,2 +1,1 @@
-# CPE212_Magboo
-UBUNTUUTU
+# CPE232

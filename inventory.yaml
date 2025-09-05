@@ -3,6 +3,10 @@
 [workstation]
 192.168.56.109
 192.168.56.110
+192.168.56.105
 [webserver]
 192.168.56.109
 192.168.56.110
+192.168.56.105
+[CentOS]
+192.168.56.105 ansible_user=matt ansible_ssh_private_key_file=~/.ssh/id_rsa
