@@ -1,0 +1,26 @@
+---
+- name: Dummy Setups
+  hosts: all
+  tasks:
+
+  - name: Update Packages
+    package:
+      name: "*"
+      state: latest
+      update_cache: yes
+
+  - name: Install Ansible, SSH, Python3, pip3 packages
+    package:
+      name:
+        - "{{ ansible_package }}"
+        - "{{ ssh_package }}"
+        - "{{ python_package }}"
+        - "{{ pip_package }}"
+      state: present
+      update_cache: yes
+
+  - name: start SSH service
+    service:
+      name: "{{ ssh_service }}"
+      state: started
+      enabled: yes
