@@ -7,13 +7,13 @@
   - name: install updates (CentOS)
     tags: always
     dnf:
-      name: 
+      name: "*" 
       update_only: yes
       update_cache: yes
     when: ansible_distribution == "CentOS"
 
   - name: install updates (Ubuntu)
-    tags: always 
+    tags: always
     apt:
       upgrade: dist
       update_cache: yes
@@ -41,6 +41,13 @@
       state: latest
     when: ansible_distribution == "CentOS"
 
+  - name: start httpd (CentOS)
+    tags: apache, centos, httpd
+    service:
+      name: httpd
+      state: started
+    when: ansible_distribution == "CentOS"
+
 - hosts: dbserver
   become: true
   tasks:
@@ -57,8 +64,8 @@
       name: mariadb
       state: restarted
       enabled: true
-  
-  - name: insta;; mariadb package (Ubuntu)
+
+  - name: install mariadb package (Ubuntu)
     tags: db, mariadb,ubuntu
     apt:
       name: mariadb-server
